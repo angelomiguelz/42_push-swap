@@ -6,7 +6,7 @@
 #    By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/28 17:00:30 by marvin            #+#    #+#              #
-#    Updated: 2023/06/01 14:37:25 by mzarichn         ###   ########.fr        #
+#    Updated: 2023/06/03 21:05:35 by mzarichn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC_PATH = ./src
 
 OBJ_PATH = ./objects
 
-SRC_NAME = push_swap.c checker.c\
+SRC_NAME = push_swap.c checker.c procedures.c sort.c\
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
 

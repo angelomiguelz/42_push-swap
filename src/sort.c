@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 17:24:18 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/03 21:09:40 by mzarichn         ###   ########.fr       */
+/*   Created: 2023/06/03 21:05:36 by mzarichn          #+#    #+#             */
+/*   Updated: 2023/06/03 21:06:54 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
+#include "push_swap.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include "../libft/src/libft.h"
+void	_sort(t_stack **stack_a)
+{
+	t_stack	*stack_b;
 
-typedef struct s_stack {
-	long	nbr;
-	long	index;
-	struct s_stack *next;
-	struct s_stack *prev;
-} t_stack;
-
-t_stack	*_checker(int ac, char **av);
-void	_sa(t_stack **a);
-
-#endif
+	
+}
