@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 20:25:34 by mzarichn          #+#    #+#             */
-/*   Updated: 2022/11/13 15:49:44 by mzarichn         ###   ########.fr       */
+/*   Updated: 2022/11/03 20:25:08 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	i = -1;
 	str = ft_strdup(s);
+	if (!str)
+		return (0);
 	if (!str)
 		return (0);
 	while (str[++i])

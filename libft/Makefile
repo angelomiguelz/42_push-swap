@@ -6,64 +6,36 @@
 #    By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 13:21:14 by mzarichn          #+#    #+#              #
-#    Updated: 2023/06/01 14:11:44 by mzarichn         ###   ########.fr        #
+#    Updated: 2023/06/04 15:44:33 by mzarichn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-
 CC = gcc
+CFLAGS = -Werror -Wextra -Wall -I.
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -g
 
-SRC_NAME = ft_isalnum.c ft_isprint.c ft_strlcat.c ft_memchr.c\
-ft_atoi.c ft_isalpha.c ft_strrchr.c ft_memcmp.c ft_putendl_fd.c\
-ft_strchr.c ft_strlcpy.c ft_strnstr.c ft_putnbr_fd.c\
-ft_tolower.c ft_bzero.c ft_isascii.c ft_memcpy.c ft_split.c\
-ft_memmove.c ft_strlen.c ft_strncmp.c ft_calloc.c ft_itoa.c\
-ft_toupper.c ft_isdigit.c ft_memset.c ft_strdup.c ft_strmapi.c\
-ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c\
-ft_substr.c ft_strjoin.c ft_strtrim.c\
-ft_lstnew.c ft_lstadd_front.c ft_lstclear.c\
-ft_lstsize.c ft_lstlast.c ft_lstiter.c\
-ft_lstadd_back.c ft_lstdelone.c ft_lstmap.c\
-
-$(VERBOSE).SILENT:
-
-SRC_PATH = ./src
-
-OBJ_PATH = ./objects
-
-OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
-
-SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
-
-INCLUDES	= -I ./src/libft.h
-
-
-DEFAULT = \033[0;39m
-RED = \033[0;91m
-GREEN = \033[0;92m
-YELLOW = \033[0;93m
+SRC = ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint ft_memcmp \
+		ft_memcpy ft_memset ft_strlen ft_strlcpy ft_strlcat ft_strncmp ft_tolower ft_toupper \
+		ft_substr ft_strdup ft_strnstr ft_strjoin ft_strchr ft_strtrim ft_strmapi ft_striteri \
+		ft_split ft_putstr_fd ft_putnbr_fd ft_putendl_fd ft_putchar_fd ft_memmove ft_memchr ft_itoa \
+		ft_strtrim ft_strrchr ft_strtrim ft_split
+BONUS = ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone ft_lstclear ft_lstiter \
+		ft_lstmap
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
-	@echo "$(GREEN)$(NAME) created!$(DEFAULT)"
+COLOR: \033[1;33m
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	@mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	
+$(NAME): $(SRC:=.o)
+		ar rc $(NAME) $(SRC:=.o) 
 clean:
-				@rm -rf $(OBJ_PATH)
-				@echo "$(YELLOW)$(NAME) files are removed$(DEFAULT)"
+		$(RM)	$(SRC:=.o) $(BONUS:=.o)
 
-fclean:			clean
-				@rm -rf objects
-				@rm -f $(NAME)
-				@echo "$(RED)$(NAME) is deleted$(DEFAULT)"
+fclean: clean
+		$(RM)	$(NAME)
 
-re:				fclean all
+re: fclean $(NAME)
+
+bonus: $(SRC:=.o)	$(BONUS:=.o)
+		ar rc $(NAME) $(SRC:=.o)	$(BONUS:=.o)

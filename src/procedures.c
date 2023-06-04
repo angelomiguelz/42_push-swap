@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:36:40 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/04 15:00:41 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:54:44 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	_sa(t_stack **a)
 		return ;
 	hold = (*a)->next;
 	(*a)->next = (*a);
-	(*a) = hold;	
+	(*a) = hold;
 	write(1, "sa\n", 3);
 }
 

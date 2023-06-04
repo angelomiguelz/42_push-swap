@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:14 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/02 18:34:32 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:48:24 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ int _checkdup(t_stack *a)
 
 
 
-t_stack	*_checker(int ac, char **av)
+t_stack	*_createList(int ac, char **av)
 {
 	t_stack *a;
 	int	i;
@@ -152,7 +152,7 @@ t_stack	*_checker(int ac, char **av)
 		_error();
 	if (ac == 2)
 	{
-		//printf("string process\n");	
+		//printf("string process\n");
 		a = _stringProcess(av);
 	}
 	else
