@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:36:40 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/03 21:12:57 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/04 15:00:41 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,47 +26,47 @@ void	_sa(t_stack **a)
 	write(1, "sa\n", 3);
 }
 
-void	_sb(t_stack **a)
+/* void	_sb(t_stack **a)
 {
 	write(1, "sb\n", 3);
-}
+} */
 
-void	_ss(t_stack **a)
+/* void	_ss(t_stack **a)
 {
 	write(1, "ss\n", 3);
-}
+} */
 
-void	_pa(t_stack **a)
+/* void	_pa(t_stack **a)
 {
 	write(1, "pa\n", 3);
-}
+} */
 
-void	_pb(t_stack **a)
+/* void	_pb(t_stack **a)
 {
 	write(1, "pb\n", 3);
-}
+} */
 
-void	_ra(t_stack **a)
+/* void	_ra(t_stack **a)
 {
 	write(1, "ra\n", 3);
-}
+} */
 
-void	_rb(t_stack **a)
+/* void	_rb(t_stack **a)
 {
 	write(1, "rb\n", 3);
-}
+} */
 
-void	rra(t_stack **a)
+/* void	rra(t_stack **a)
 {
 	write(1, "rra\n", 3);
-}
+} */
 
-void	rrb(t_stack **a)
+/* void	rrb(t_stack **a)
 {
 	write(1, "rrb\n", 3);
-}
+} */
 
-void	_rrr(t_stack **a)
+/* void	_rrr(t_stack **a)
 {
 	write(1, "rrr\n", 3);
-}
+} */

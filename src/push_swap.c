@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:17 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/03 21:13:38 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/04 15:03:07 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,25 @@
 // - Sort if 2 args
 // - Sort if 3 args
 
+void	_pephole(t_stack **a)
+{
+	while (*a)
+	{
+		printf("NUMBERS: %li\n", (*a)->nbr);
+		(*a) = (*a)->next;
+	}
+}
+
 
 int main(int ac, char **av)
 {
 	t_stack *a;
 
 	a = _checker(ac, av);
+	_pephole(&a);
 	if (!a)
 		printf("TUA MAE\n\n");
-	while (a)
-	{
-		printf("NUMBERS: %li\n", a->nbr);
-		a = a->next;
-	}
+	_sa(&a);
+	_pephole(&a);
 	return (1);
 } 

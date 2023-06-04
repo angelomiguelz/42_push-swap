@@ -6,7 +6,7 @@
 #    By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/28 17:00:30 by marvin            #+#    #+#              #
-#    Updated: 2023/06/03 21:05:35 by mzarichn         ###   ########.fr        #
+#    Updated: 2023/06/04 15:03:26 by mzarichn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT_PATH = ./libft
 #FT_PRINTF = ./Library/Printf/libftprintf.a
 #FT_PRINTF_PATH = ./Library/Printf
 
-INC = -I ./Library -I ./Library/Libft  #-fsanitize=address
+INC = -I ./Library -I ./Library/Libft  -fsanitize=address
 
 SRC_PATH = ./src
 
