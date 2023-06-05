@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:14 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/04 17:48:24 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:30:54 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	_error()
 }
 
 // This function returns the last element of the stack.
-t_stack	*last_element(t_stack *lst)
+t_node	*last_element(t_node *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -29,7 +29,7 @@ t_stack	*last_element(t_stack *lst)
 }
 
 // Function to add a new node to the stack from back side
-void	node_add_back(t_stack **stack, t_stack *stack_new)
+void	node_add_back(t_node **stack, t_node *stack_new)
 {
 	if (!stack)
 		return ;
@@ -89,11 +89,11 @@ void	_free(char *string, char **matrix)
 }
 
 //Creates a New Node
-t_stack	*new_node(int content)
+t_node	*new_node(int content)
 {
-	t_stack	*new;
+	t_node	*new;
 
-	new = malloc(sizeof(t_stack));
+	new = malloc(sizeof(t_node));
 	if (!new)
 		_error();
 	new->nbr = content;
@@ -101,9 +101,9 @@ t_stack	*new_node(int content)
 	return (new);
 }
 
-t_stack	*_stringProcess(char **av)
+t_node	*_stringProcess(char **av)
 {
-	t_stack	*a;
+	t_node	*a;
 	char	**str;
 	int		i;
 	int		j;
@@ -121,9 +121,9 @@ t_stack	*_stringProcess(char **av)
 	return (a);
 }
 
-int _checkdup(t_stack *a)
+int _checkdup(t_node *a)
 {
-	t_stack *temp;
+	t_node *temp;
 
 	while (a)
 	{
@@ -141,9 +141,9 @@ int _checkdup(t_stack *a)
 
 
 
-t_stack	*_createList(int ac, char **av)
+t_node	*_createList(int ac, char **av)
 {
-	t_stack *a;
+	t_node *a;
 	int	i;
 	int	j;
 

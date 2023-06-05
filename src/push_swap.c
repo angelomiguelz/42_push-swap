@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:17 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/04 17:51:22 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:35:47 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // - Sort if 2 args
 // - Sort if 3 args
 
-void	_pephole(t_stack *a)
+void	_pephole(t_node *a)
 {
 	while (a)
 	{
@@ -30,7 +30,7 @@ void	_pephole(t_stack *a)
 
 int main(int ac, char **av)
 {
-	t_stack *a;
+	t_node *a;
 
 	a = _createList(ac, av);
 	_pephole(a);

@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 17:24:18 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/04 17:54:14 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:36:35 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 
-typedef struct s_stack {
+typedef struct s_node {
 	long	nbr;
 	long	index;
-	struct s_stack *next;
-	struct s_stack *prev;
-} t_stack;
+	struct s_node *next;
+	struct s_node *prev;
+} t_node;
 
-t_stack	*_createList(int ac, char **av);
-void	_sa(t_stack **a);
+t_node	*_createList(int ac, char **av);
+void	_sa(t_node **a);
 
 #endif

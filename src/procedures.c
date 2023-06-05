@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:36:40 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/04 17:54:44 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:36:17 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 //Swap the first 2 elements at the top of stack a
 //Do nothing if there is only one or no elements.
-void	_sa(t_stack **a)
+void	_sa(t_node **a)
 {
-	t_stack *hold;
+	t_node *temp;
 
-	if (!(*a)->next || !(*a))
-		return ;
-	hold = (*a)->next;
-	(*a)->next = (*a);
-	(*a) = hold;
+	temp = (*a);
+	(*a) = (*a)->next;
+	temp->next = (*a)->next;
+	(*a)->next = temp;
 	write(1, "sa\n", 3);
 }
 
