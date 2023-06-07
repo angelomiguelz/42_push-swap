@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:17 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/05 15:35:47 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/07 15:47:12 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 //TODO:
 // - Put Procedures on H
-// - Create function to check if sorted
-// - Sort if 2 args
 // - Sort if 3 args
 
 void	_pephole(t_node *a)
@@ -27,16 +25,19 @@ void	_pephole(t_node *a)
 	}
 }
 
-
 int main(int ac, char **av)
 {
 	t_node *a;
+	t_node *b;
 
 	a = _createList(ac, av);
+	b = _createList(ac, av);
+	b->nbr = 4;
 	_pephole(a);
+	_pephole(b);
 	if (!a)
 		printf("TUA MAE\n\n");
-	_sa(&a);
+	_pa(&a, &b);
 	_pephole(a);
 	return (1);
 } 

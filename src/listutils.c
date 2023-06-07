@@ -1,104 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   listUtils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:14 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/05 15:30:54 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/07 15:30:16 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	_error()
-{
-	write (2, "Error\n", 6);
-	exit(1);
-}
-
 // This function returns the last element of the stack.
-t_node	*last_element(t_node *lst)
+t_node	*last_element(t_node *list)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-// Function to add a new node to the stack from back side
-void	node_add_back(t_node **stack, t_node *stack_new)
-{
-	if (!stack)
-		return ;
-	if (!*stack)
-		*stack = stack_new;
-	else
-		(last_element(*stack))->next = stack_new;
-}
-
-int	_atoi(const char *s)
-{
-	int				sign;
-	long long int	nbr;
-
-	nbr = 0;
-	sign = 1;
-	while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\f'
-		|| *s == '\v' || *s == '\r')
-		s++;
-	if (*s == '-' || *s == '+')
-	{
-		if (*s == '-')
-		{
-			sign = -1;
-			s++;
-		}
-		else
-			s++;
-	}
-	while (*s)
-	{
-		if (!ft_isdigit(*s))
-			_error();
-		nbr = nbr * 10 + (*s - 48);
-		s++;
-	}
-	if ((sign * nbr) > 2147483647 || (sign * nbr) < -2147483648)
+	if (!list)
 		_error();
-	return (sign * nbr);
+	while (list->next)
+		list = list->next;
+	return (list);
 }
 
-void	_free(char *string, char **matrix)
+// Function to add a new node to the list
+void	add_node(t_node **list, t_node *node)
 {
-	int	i;
-
-	if (string != NULL)
-	{
-		free(string);
-	}
-	if (matrix != NULL)
-	{
-		i = -1;
-		while (matrix[++i])
-			free(matrix[i]);
-		free(matrix);
-	}
+	if (!list) //if theres no list
+		return ;
+	if (!*list) //if theres no nodes in list, the givin node will be the first one.
+		*list = node;
+	else
+		(last_element(*list))->next = node;
 }
 
 //Creates a New Node
 t_node	*new_node(int content)
 {
-	t_node	*new;
+	t_node	*new_node;
 
-	new = malloc(sizeof(t_node));
-	if (!new)
+	new_node = malloc(sizeof(t_node));
+	if (!new_node)
 		_error();
-	new->nbr = content;
-	new->next = NULL;
-	return (new);
+	new_node->nbr = content;
+	new_node->next = NULL;
+	return (new_node);
 }
 
 t_node	*_stringProcess(char **av)
@@ -115,7 +60,7 @@ t_node	*_stringProcess(char **av)
 	{
 		j = _atoi(str[i]);
 		//printf("ATOI: %i\n", j);
-		node_add_back(&a, new_node(j));
+		add_node(&a, new_node(j));
 	}
 	_free(NULL, str);
 	return (a);
@@ -139,7 +84,23 @@ int _checkdup(t_node *a)
 	return (1);
 }
 
+bool	_checkSorted(t_node *a)
+{
+	long int	nbr;
 
+	nbr = a->nbr;
+	while (a)
+	{
+		//printf("number check: %li\n", nbr);
+		//printf("number other check: %li\n", a->nbr);
+		if (nbr > a->nbr)
+			return (false);
+		nbr = a->nbr;
+		a = a->next;
+		//printf("next\n");
+	}
+	return (true);
+}
 
 t_node	*_createList(int ac, char **av)
 {
@@ -161,7 +122,7 @@ t_node	*_createList(int ac, char **av)
 		while (i < ac)
 		{
 			j = _atoi(av[i]);
-			node_add_back(&a, new_node(j));
+			add_node(&a, new_node(j));
 			i++;
 		}
 	}

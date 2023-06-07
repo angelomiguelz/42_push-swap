@@ -6,7 +6,7 @@
 #    By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/28 17:00:30 by marvin            #+#    #+#              #
-#    Updated: 2023/06/04 15:41:48 by mzarichn         ###   ########.fr        #
+#    Updated: 2023/06/07 15:22:21 by mzarichn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 LIBFT = ./libft/libft.a
 LIBFT_PATH = ./libft
@@ -26,7 +26,7 @@ SRC_PATH = ./src
 
 OBJ_PATH = ./objects
 
-SRC_NAME = push_swap.c checker.c procedures.c sort.c\
+SRC_NAME = push_swap.c listutils.c procedures.c sort.c utils.c\
 
 OBJS = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
 

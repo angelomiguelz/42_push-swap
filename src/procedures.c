@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:36:40 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/05 15:36:17 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/07 15:51:42 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,56 @@
 
 //Swap the first 2 elements at the top of stack a
 //Do nothing if there is only one or no elements.
-void	_sa(t_node **a)
+void	_sa(t_node **a, bool print)
 {
-	t_node *temp;
+	t_node *holder;
 
-	temp = (*a);
+	if (!(*a) || !(*a)->next)
+		return ;
+	holder = (*a);
 	(*a) = (*a)->next;
-	temp->next = (*a)->next;
-	(*a)->next = temp;
-	write(1, "sa\n", 3);
+	holder->next = (*a)->next;
+	(*a)->next = holder;
+	if (print == true)
+		write(1, "sa\n", 3);
+}
+//Swap the first 2 elements at the top of stack b.
+//Do nothing if there is only one or no elements.
+void	_sb(t_node **b, bool print)
+{
+	t_node	*holder;
+
+	if (!(*b)->next || !(*b))
+		return ;
+	holder = (*b);
+	(*b) = (*b)->next;
+	holder->next = (*b)->next;
+	(*b)->next = holder;
+	if (print == true)
+		write(1, "sb\n", 3);
 }
 
-/* void	_sb(t_stack **a)
+//sa and sb at the same time.
+void	_ss(t_node **a, t_node **b)
 {
-	write(1, "sb\n", 3);
-} */
-
-/* void	_ss(t_stack **a)
-{
+	_sa(a, 0);
+	_sb(b, 0);
 	write(1, "ss\n", 3);
-} */
+}
 
-/* void	_pa(t_stack **a)
+//Take the first element at the top of b and put it at the top of a.
+//Do nothing if b is empty.
+void	_pa(t_node **a, t_node **b)
 {
+	t_node *holder;
+	if (!(*b))
+		return ;
+	holder = (*a);
+	(*a) = (*b);
+	(*b) = (*b)->next;
+	(*a)->next = holder;
 	write(1, "pa\n", 3);
-} */
+}
 
 /* void	_pb(t_stack **a)
 {
