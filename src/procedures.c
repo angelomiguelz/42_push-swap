@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:36:40 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/07 15:51:42 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/07 21:25:34 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,47 @@ void	_ss(t_node **a, t_node **b)
 //Do nothing if b is empty.
 void	_pa(t_node **a, t_node **b)
 {
-	t_node *holder;
+	t_node *old_first_node;
+
 	if (!(*b))
 		return ;
-	holder = (*a);
+	old_first_node = (*a);
 	(*a) = (*b);
 	(*b) = (*b)->next;
-	(*a)->next = holder;
+	(*a)->next = old_first_node;
 	write(1, "pa\n", 3);
 }
 
-/* void	_pb(t_stack **a)
+//Take the first element at the top of a and put it at the top of b.
+//Do nothing if a is empty.
+void	_pb(t_node **a, t_node **b)
 {
-	write(1, "pb\n", 3);
-} */
+	t_node	*old_first_node;
 
-/* void	_ra(t_stack **a)
+	if (!(*a))
+		return ;
+	old_first_node = (*b);
+	(*b) = (*a);
+	(*a) = (*a)->next;
+	(*b)->next = old_first_node;
+	write(1, "pb\n", 3);
+}
+
+//Shift up all elements of stack a by 1.
+//The first element becomes the last one.
+void	_ra(t_node **a, bool print)
 {
-	write(1, "ra\n", 3);
-} */
+	t_node	*first_node;
+
+	first_node = (*a);
+	while ((*a))
+	{
+		(*a) = (*a)->next;
+	}
+	(*a)->next = first_node;
+	if (print == true)
+		write(1, "ra\n", 3);
+}
 
 /* void	_rb(t_stack **a)
 {
