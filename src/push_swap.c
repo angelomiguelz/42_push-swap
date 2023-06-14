@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:17 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/07 21:29:07 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:35:10 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ int main(int ac, char **av)
 	//t_node *b;
 
 	a = _createList(ac, av);
-	printf("A: ");
-	_pephole(a);
-	_ra(&a, 1);
 	printf("A: ");
 	_pephole(a);
 	

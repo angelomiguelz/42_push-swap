@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   listUtils.c                                        :+:      :+:    :+:   */
+/*   listutils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:14 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/07 15:30:16 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:13:52 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 t_node	*last_element(t_node *list)
 {
 	if (!list)
-		_error();
+		return (NULL);
 	while (list->next)
 		list = list->next;
 	return (list);

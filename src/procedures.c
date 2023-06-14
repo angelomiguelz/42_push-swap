@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:36:40 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/07 21:25:34 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:16:44 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,8 @@ void	_ra(t_node **a, bool print)
 {
 	t_node	*first_node;
 
-	first_node = (*a);
-	while ((*a))
-	{
-		(*a) = (*a)->next;
-	}
+	first_node = *a;
+	*a = last_element(*a);
 	(*a)->next = first_node;
 	if (print == true)
 		write(1, "ra\n", 3);
