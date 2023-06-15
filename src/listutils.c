@@ -6,14 +6,27 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:14 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/14 14:13:52 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:03:26 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// This function returns the last element of the stack.
-t_node	*last_element(t_node *list)
+int	nodes_quantity(t_node *a)
+{
+	int	i;
+
+	i = 0;
+	while (a)
+	{
+		a = a->next;
+		i++;
+	}
+	return (i);
+}
+
+// This function returns the last node of the stack.
+t_node	*last_node(t_node *list)
 {
 	if (!list)
 		return (NULL);
@@ -23,14 +36,14 @@ t_node	*last_element(t_node *list)
 }
 
 // Function to add a new node to the list
-void	add_node(t_node **list, t_node *node)
+void	add_node(t_node **stack, t_node *node)
 {
-	if (!list) //if theres no list
+	if (!stack) //if theres no list
 		return ;
-	if (!*list) //if theres no nodes in list, the givin node will be the first one.
-		*list = node;
+	if (!*stack) //if theres no nodes in list, the givin node will be the first one.
+		*stack = node;
 	else
-		(last_element(*list))->next = node;
+		(last_node(*stack))->next = node;
 }
 
 //Creates a New Node

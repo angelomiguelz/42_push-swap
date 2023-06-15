@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:17 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/14 14:35:10 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:12:52 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,28 @@ void	_pephole(t_node *a)
 	}
 }
 
+void	_sort(t_node **a)
+{
+	t_node	*b;
+
+	b = NULL;
+	
+}
+
 int main(int ac, char **av)
 {
 	t_node *a;
 	//t_node *b;
 
 	a = _createList(ac, av);
-	printf("A: ");
+	if (!_checkSorted(a))
+	{
+		if (nodes_quantity(a) == 2)
+			_sa(&a, 1);
+		else
+			_sort(&a);
+	}
 	_pephole(a);
-	
 	return (1);
 } 
 

@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:36:40 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/14 14:16:44 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:15:54 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //Do nothing if there is only one or no elements.
 void	_sa(t_node **a, bool print)
 {
-	t_node *holder;
+	t_node	*holder;
 
 	if (!(*a) || !(*a)->next)
 		return ;
@@ -55,7 +55,7 @@ void	_ss(t_node **a, t_node **b)
 //Do nothing if b is empty.
 void	_pa(t_node **a, t_node **b)
 {
-	t_node *old_first_node;
+	t_node	*old_first_node;
 
 	if (!(*b))
 		return ;
@@ -83,33 +83,98 @@ void	_pb(t_node **a, t_node **b)
 
 //Shift up all elements of stack a by 1.
 //The first element becomes the last one.
+// -- (*a) is the head pointer --
 void	_ra(t_node **a, bool print)
 {
 	t_node	*first_node;
 
 	first_node = *a;
-	*a = last_element(*a);
+	*a = last_node(*a);
 	(*a)->next = first_node;
+	(*a) = first_node->next;
+	first_node->next = NULL;
 	if (print == true)
 		write(1, "ra\n", 3);
 }
 
-/* void	_rb(t_stack **a)
+//Shift up all elements of stack b by 1.
+//The first element becomes the last one.
+// -- (*b) is the head pointer --
+void	_rb(t_node **b, bool print)
 {
-	write(1, "rb\n", 3);
-} */
+	t_node	*first_node;
 
-/* void	rra(t_stack **a)
-{
-	write(1, "rra\n", 3);
-} */
+	first_node = *b;
+	*b = last_node(*b);
+	(*b)->next = first_node;
+	(*b) = first_node->next;
+	first_node->next = NULL;
+	if (print == true)
+		write(1, "rb\n", 3);
+}
 
-/* void	rrb(t_stack **a)
+//ra and rb at the same time.
+void	_rr(t_node **a, t_node **b)
 {
-	write(1, "rrb\n", 3);
-} */
+	_ra(a, 0);
+	_rb(b, 0);
+	write(1, "rr\n", 3);
+}
 
-/* void	_rrr(t_stack **a)
+//(reverse rotate a): Shift down all elements of stack a by 1.
+//The last element becomes the first one.
+void	_rra(t_node **a, bool print)
 {
+	t_node	*first_node;
+	int	i;
+
+	i = 0;
+	first_node = (*a);
+	while ((*a)->next)
+	{
+		(*a) = (*a)->next;
+		i++;
+	}
+	(*a)->next = first_node; //mete o ultimo node em cima;
+	while (i > 1)
+	{
+		first_node = first_node->next;
+		i--;
+	}
+	first_node->next = NULL;
+	if (print == true)
+		write(1, "rra\n", 3);
+}
+
+//(reverse rotate b): Shift down all elements of stack b by 1.
+//The last element becomes the first one.
+void	_rrb(t_node **b, bool print)
+{
+	t_node	*first_node;
+	int	i;
+
+	i = 0;
+	first_node = (*b);
+	while ((*b)->next)
+	{
+		(*b) = (*b)->next;
+		i++;
+	}
+	(*b)->next = first_node; //mete o ultimo node em cima;
+	while (i > 1)
+	{
+		first_node = first_node->next;
+		i--;
+	}
+	first_node->next = NULL;
+	if (print == true)
+		write(1, "rrb\n", 3);
+}
+
+//rra and rrb at the same time.
+void	_rrr(t_node **a, t_node **b)
+{
+	_rra(a, 0);
+	_rrb(b, 0);
 	write(1, "rrr\n", 3);
-} */
+}
