@@ -28,7 +28,10 @@ typedef struct s_node {
 t_node	*_createList(int ac, char **av);
 bool	_checkSorted(t_node *a);
 t_node	*last_node(t_node *list);
-int	nodes_quantity(t_node *a);
+int		nodes_quantity(t_node *a);
+void	simple_sort(t_node **a, t_node **b);
+
+
 // procedures
 void	_sa(t_node **a, bool print);
 void	_sb(t_node **b, bool print);
@@ -44,7 +47,7 @@ void	_rrr(t_node **a, t_node **b);
 
 
 // utils
-int	_atoi(const char *s);
+int		_atoi(const char *s);
 void	_error();
 void	_free(char *string, char **matrix);
 
