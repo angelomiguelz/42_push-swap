@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:14 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/15 17:03:26 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:45:38 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_node	*new_node(int content)
 	if (!new_node)
 		_error();
 	new_node->nbr = content;
+	new_node->index = -1;
 	new_node->next = NULL;
 	return (new_node);
 }
@@ -115,6 +116,41 @@ bool	_checkSorted(t_node *a)
 	return (true);
 }
 
+t_node	*get_next_min(t_node *stack)
+{
+	t_node	*head;
+	t_node	*min;
+	bool	starter;
+
+	min = NULL;
+	head = stack;
+	starter = false;
+	while (head)
+	{
+		if ((head->index == -1) && (!starter || head->nbr < min->nbr))
+		{
+			starter = true;
+			min = head;
+		}
+		head = head->next;
+	}
+	return (min);
+}
+
+void	_indexStack(t_node **stack)
+{
+	t_node	*head;
+	long		index;
+
+	index = 0;
+	head = get_next_min(*stack);
+	while (head)
+	{
+		head->index = index++;
+		head = get_next_min(*stack);
+	}
+}
+
 t_node	*_createList(int ac, char **av)
 {
 	t_node *a;
@@ -144,5 +180,6 @@ t_node	*_createList(int ac, char **av)
 		printf("CHECK DUP ERROU\n");
 		_error();
 	}
+	_indexStack(&a);
 	return (a);
 }
