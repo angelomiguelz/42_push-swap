@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:17 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/21 12:56:06 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/28 14:49:47 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,21 @@ int main(int ac, char **av)
 	b = NULL;
 	a = _createList(ac, av);
 
-	printf("First Stack A:\n");
+/* 	printf("First Stack A:\n");
 	_pephole(a);
-
+ */
 	if (!_checkSorted(a))
 	{
 		if (nodes_quantity(a) <= 5)
-			simple_sort(&a, &b);
+			_sort2to5(&a, &b);
 		else
-			radix_sort(&a, &b);
+			_radixSort(&a, &b);
 	}
-
+/* 
 	printf("\nAfter Stack A:\n");
 	_pephole(a);
 	printf("After Stack B:\n");
-	_pephole(b);
+	_pephole(b); */
 
 	return (1);
 }

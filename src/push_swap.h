@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 17:24:18 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/21 12:44:44 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/28 14:50:07 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ t_node	*_createList(int ac, char **av);
 bool	_checkSorted(t_node *a);
 t_node	*last_node(t_node *list);
 int		nodes_quantity(t_node *a);
-void	simple_sort(t_node **a, t_node **b);
-void	radix_sort(t_node **a, t_node **b);
-
+void	_sort2to5(t_node **a, t_node **b);
+void	_radixSort(t_node **a, t_node **b);
 
 // procedures
 void	_sa(t_node **a, bool print);

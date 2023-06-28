@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 21:05:36 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/21 12:56:37 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/28 14:49:27 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,11 @@ int	get_min(t_node *stack, int stopper)
 	return (min);
 }
 
-int	get_distance(t_node *stack, int index)
+int	get_distance(t_node *head, int index)
 {
-	t_node	*head;
 	int		distance;
 
 	distance = 0;
-	head = stack;
 	while (head)
 	{
 		if (head->index == index)
@@ -83,8 +81,8 @@ void	_sort4(t_node **a, t_node **b)
 {
 	int	distance;
 
-	if (_checkSorted(*a))
-		return ;
+/* 	if (_checkSorted(*a))
+		return ; */
 	distance = get_distance(*a, get_min(*a, -1));
 	if (distance == 1)
 		_ra(a, 1);
@@ -128,7 +126,8 @@ void	_sort5(t_node **a, t_node **b)
 	_pa(a, b);
 }
 
-void	simple_sort(t_node **a, t_node **b)
+
+void	_sort2to5(t_node **a, t_node **b)
 {
 	int	size;
 	size = nodes_quantity(*a);
@@ -142,42 +141,40 @@ void	simple_sort(t_node **a, t_node **b)
 		_sort5(a, b);
 }
 
-int	get_max_bits(t_node *stack)
+//gets the max index number and sees 
+//the quantity of bits it will need to work with.
+int	_maxBits(t_node *head)
 {
-	t_node	*head;
 	int		max;
 	int		max_bits;
 
-	head = stack;
 	max = head->index;
-	max_bits = 0;
+	max_bits = -1;
 	while (head)
 	{
 		if (head->index > max)
 			max = head->index;
 		head = head->next;
 	}
-	while ((max >> max_bits) != 0)
-		max_bits++;
+	while (max >> ++max_bits)
+		;
 	return (max_bits);
 }
 
-void	radix_sort(t_node **a, t_node **b)
+void	_radixSort(t_node **a, t_node **b)
 {
 	t_node	*head_a;
 	int		i;
-	int		j;
 	int		size;
 	int		max_bits;
 
-	i = 0;
 	head_a = *a;
-	size = nodes_quantity(head_a);
-	max_bits = get_max_bits(*a);
-	while (i < max_bits)
+	max_bits = _maxBits(*a);
+	i = -1;
+	while (++i < max_bits)
 	{
-		j = 0;
-		while (j++ < size)
+		size = nodes_quantity(*a);
+		while (size--)
 		{
 			head_a = *a;
 			if (((head_a->index >> i) & 1) == 1)
@@ -185,8 +182,7 @@ void	radix_sort(t_node **a, t_node **b)
 			else
 				_pb(a, b);
 		}
-		while (nodes_quantity(*b) != 0)
+		while (nodes_quantity(*b))
 			_pa(a, b);
-		i++;
 	}
 }
