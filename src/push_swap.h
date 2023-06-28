@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 17:24:18 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/28 14:50:07 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:59:30 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	_rrr(t_node **a, t_node **b);
 
 
 // utils
-int		_atoi(const char *s);
 void	_error();
+void	_freeList(t_node **a);
 void	_free(char *string, char **matrix);
-
+void	_checkArgs(int ac, char **av);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:32:14 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/21 11:45:38 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:59:14 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ t_node	*last_node(t_node *list)
 // Function to add a new node to the list
 void	add_node(t_node **stack, t_node *node)
 {
-	if (!stack) //if theres no list
+	if (!stack)
 		return ;
-	if (!*stack) //if theres no nodes in list, the givin node will be the first one.
+	if (!*stack)
 		*stack = node;
 	else
 		(last_node(*stack))->next = node;
@@ -60,44 +60,6 @@ t_node	*new_node(int content)
 	return (new_node);
 }
 
-t_node	*_stringProcess(char **av)
-{
-	t_node	*a;
-	char	**str;
-	int		i;
-	int		j;
-
-	a = NULL;
-	i = -1;
-	str = ft_split(av[1], ' ');
-	while (str[++i])
-	{
-		j = _atoi(str[i]);
-		//printf("ATOI: %i\n", j);
-		add_node(&a, new_node(j));
-	}
-	_free(NULL, str);
-	return (a);
-}
-
-int _checkdup(t_node *a)
-{
-	t_node *temp;
-
-	while (a)
-	{
-		temp = a->next;
-		while (temp)
-		{
-			if (a->nbr == temp->nbr)
-				return (0);
-			temp = temp->next;
-		}
-		a = a->next;
-	}
-	return (1);
-}
-
 bool	_checkSorted(t_node *a)
 {
 	long int	nbr;
@@ -105,13 +67,10 @@ bool	_checkSorted(t_node *a)
 	nbr = a->nbr;
 	while (a)
 	{
-		//printf("number check: %li\n", nbr);
-		//printf("number other check: %li\n", a->nbr);
 		if (nbr > a->nbr)
 			return (false);
 		nbr = a->nbr;
 		a = a->next;
-		//printf("next\n");
 	}
 	return (true);
 }
@@ -158,27 +117,12 @@ t_node	*_createList(int ac, char **av)
 	int	j;
 
 	a = NULL;
-	if (ac < 2)
-		_error();
-	if (ac == 2)
+	i = 1;
+	while (i < ac)
 	{
-		//printf("string process\n");
-		a = _stringProcess(av);
-	}
-	else
-	{
-		i = 1;
-		while (i < ac)
-		{
-			j = _atoi(av[i]);
-			add_node(&a, new_node(j));
-			i++;
-		}
-	}
-	if (!_checkdup(a))
-	{
-		printf("CHECK DUP ERROU\n");
-		_error();
+		j = ft_atoi(av[i]);
+		add_node(&a, new_node(j));
+		i++;
 	}
 	_indexStack(&a);
 	return (a);
