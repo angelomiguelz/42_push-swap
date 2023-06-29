@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 18:06:10 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/06/28 18:15:52 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:41:39 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,16 @@ int	_checkDuplicates(int number, char **args, int pos)
 	return (0);
 }
 
-int	is_digit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-int	is_sign(char c)
-{
-	return (c == '+' || c == '-');
-}
-
 int	arg_is_number(char *s)
 {
 	int	i;
 
 	i = 0;
-	if (is_sign(s[i]) && s[i + 1] != '\0')
+	if ((s[i] == '+' || s[i] == '-') && s[i + 1] != '\0')
 		i++;
-	while (s[i] && is_digit(s[i]))
+	while (s[i] && (s[i] >= '0' && s[i] <= '9'))
 		i++;
-	if (s[i] != '\0' && !is_digit(s[i]))
+	if (s[i] != '\0' && (s[i] < '0' && s[i] > '9'))
 		return (0);
 	return (1);
 }
@@ -99,8 +89,8 @@ void	_checkArgs(int ac, char **av)
 	int i;
 	long number;
 	bool error;
+	
 	error = false;
-
 	i = 0;
 	number = -1;
 	while (++i < ac)
@@ -118,35 +108,3 @@ void	_checkArgs(int ac, char **av)
 			_error();
 	}
 }
-
-/* int	_atoi(const char *s)
-{
-	int				sign;
-	long long int	nbr;
-
-	nbr = 0;
-	sign = 1;
-	while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\f'
-		|| *s == '\v' || *s == '\r')
-		s++;
-	if (*s == '-' || *s == '+')
-	{
-		if (*s == '-')
-		{
-			sign = -1;
-			s++;
-		}
-		else
-			s++;
-	}
-	while (*s)
-	{
-		if (!ft_isdigit(*s))
-			_error();
-		nbr = nbr * 10 + (*s - 48);
-		s++;
-	}
-	if ((sign * nbr) > 2147483647 || (sign * nbr) < -2147483648)
-		_error();
-	return (sign * nbr);
-} */
